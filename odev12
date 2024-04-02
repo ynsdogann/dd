@@ -1,0 +1,15 @@
+--film tablosunda film uzunluğu length sütununda gösterilmektedir. Uzunluğu ortalama film uzunluğundan fazla kaç tane film vardır?
+
+select count(length),avg(length) from film where length>115
+
+--film tablosunda en yüksek rental_rate değerine sahip kaç tane film vardır?
+
+select max(rental_rate),count(rental_rate) from film group by rental_rate order by rental_rate desc
+
+--film tablosunda en düşük rental_rate ve en düşün replacement_cost değerlerine sahip filmleri sıralayınız.
+
+select title,min(rental_rate)"Rental Deger",min(replacement_cost)"Replacement Deger" from film  group by title  
+
+payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
+
+select first_name, amount from customer left join payment  on customer.customer_id =payment.customer_id order by amount desc 
